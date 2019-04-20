@@ -7,6 +7,8 @@ module Api
 			end
 
 			def create
+				file =  params[:file]
+				User.import(file)
 				users = User.order('created_at DESC')
 				render json: {status: 'Success', message: 'Loaded users', data: users}, status: :ok
 			end

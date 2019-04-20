@@ -18,9 +18,10 @@ ActiveRecord::Schema.define(version: 2019_04_20_061956) do
   create_table "users", force: :cascade do |t|
     t.string "full_name"
     t.string "address"
-    t.integer "father_id"
+    t.bigint "father_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["father_id"], name: "index_users_on_father_id"
   end
 
 end
