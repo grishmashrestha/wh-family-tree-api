@@ -1,3 +1,15 @@
+GIT
+  remote: https://github.com/sinatra/sinatra.git
+  revision: 5e2e41f28395d68a922b60bc851951d46accf2b7
+  specs:
+    rack-protection (2.0.5)
+      rack
+    sinatra (2.0.5)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.5)
+      tilt (~> 2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -51,6 +63,7 @@ GEM
     byebug (11.0.1)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
+    connection_pool (2.2.2)
     crass (1.0.4)
     erubi (1.8.0)
     ffi (1.10.0)
@@ -81,6 +94,7 @@ GEM
     msgpack (1.2.10-java)
     msgpack (1.2.10-x64-mingw32)
     msgpack (1.2.10-x86-mingw32)
+    mustermann (1.0.3)
     nio4r (2.3.1)
     nio4r (2.3.1-java)
     nokogiri (1.10.2)
@@ -136,7 +150,13 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    redis (4.1.0)
     ruby_dep (1.5.0)
+    sidekiq (5.2.6)
+      connection_pool (~> 2.2, >= 2.2.2)
+      rack (>= 1.5.0)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
     spoon (0.0.6)
       ffi
     spring (2.0.2)
@@ -154,6 +174,7 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     thread_safe (0.3.6-java)
+    tilt (2.0.9)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     tzinfo-data (1.2019.1)
@@ -180,6 +201,8 @@ DEPENDENCIES
   puma (~> 3.11)
   rack-cors
   rails (~> 5.2.3)
+  sidekiq
+  sinatra!
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
