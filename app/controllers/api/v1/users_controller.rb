@@ -18,7 +18,7 @@ module Api
 				csv_file.write(file.tempfile.read)
 				# ReportWorker.perform_async(path)
 				users = User.import(path)
-				render json: {status: 'Success', message: 'The CSV is being loaded', data: {users: users}}, status: :ok
+				render json: {status: 'Success', message: 'The CSV is being loaded', users: users}, status: :ok
 			end
 
 		end
