@@ -7,7 +7,6 @@ class ReportWorker
 		# open the file
 		csv_file = File.open(path, "r")
 		puts "inside worker"
-		sleep (30.seconds)
 		CSV.foreach(csv_file, col_sep: "\t", headers: true) do |row|  
 			puts "inside foreach csv" 	
 			User.import_each(row)
