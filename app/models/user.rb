@@ -1,7 +1,7 @@
 require 'csv'
 class User < ApplicationRecord
 	has_many :sons, class_name: "User", foreign_key: "father_id"
-	has_one :father, class_name: "User"
+	belongs_to :father, class_name: "User", optional: true
 
 	def self.import(path)
 		# open the file
@@ -9,7 +9,7 @@ class User < ApplicationRecord
 		CSV.foreach(csv_file, col_sep: "\t", headers: true) do |row|  
 			self.import_each(row)
 		end
-		User.all
+		User.all.includes(:sons, :father)
 	end
 	
 	def self.import_each(row)
