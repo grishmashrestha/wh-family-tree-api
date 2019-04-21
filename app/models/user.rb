@@ -1,7 +1,17 @@
+require 'csv'
 class User < ApplicationRecord
 	has_many :sons, class_name: "User", foreign_key: "father_id"
- 	has_one :father, class_name: "User"
+	has_one :father, class_name: "User"
 
+	def self.import(path)
+		# open the file
+		csv_file = File.open(path, "r")
+		CSV.foreach(csv_file, col_sep: "\t", headers: true) do |row|  
+			self.import_each(row)
+		end
+		User.all
+	end
+	
 	def self.import_each(row)
 		grandfather = User.find_by_full_name(row[0])
         father = User.find_by_full_name(row[1])
