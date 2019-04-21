@@ -3,7 +3,7 @@ module Api
 		class UsersController < ApplicationController
 
 			def index
-				users = User.order('created_at DESC').includes(:sons, :father)
+				users = User.all.includes(:sons, :father)
 				render json: {status: 'Success', message: 'Loaded users', users: users}, status: :ok
 			end
 
